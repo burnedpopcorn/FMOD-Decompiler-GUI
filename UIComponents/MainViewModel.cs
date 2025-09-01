@@ -1,10 +1,8 @@
 ﻿using Cysharp.Diagnostics;
-using MsBox.Avalonia.Base;
 using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
 using System;
 using System.IO;
-using System.Linq;
 using System.Reactive;
 using System.Reactive.Subjects;
 using System.Reactive.Threading.Tasks;

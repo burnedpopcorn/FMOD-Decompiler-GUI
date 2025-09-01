@@ -7,12 +7,16 @@
     <Nullable>enable</Nullable>
     <BuiltInComInteropSupport>true</BuiltInComInteropSupport>
     <ApplicationManifest>app.manifest</ApplicationManifest>
+    <ApplicationIcon>icon.ico</ApplicationIcon>
+    <AssemblyName>FMOD-Decompiler-GUI</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Avalonia.Desktop" Version="11.0.6" />
   </ItemGroup>
-
+  <ItemGroup>
+    <Resource Include="icon.ico" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\UIComponents\UIComponents.csproj" />
   </ItemGroup>

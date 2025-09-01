@@ -26,17 +26,15 @@
 		<DockPanel VerticalAlignment="Top" HorizontalAlignment="Left">
 			<Menu DockPanel.Dock="Top">
 				<MenuItem Header="_Menu">
-					<MenuItem Header="_Open..."/>
-					<Separator/>
-					<MenuItem Header="_Exit"/>
+					<MenuItem Header="_Exit" Click="ExitMenu_Click"/>
 				</MenuItem>
-				<MenuItem Header="_Options">
-					<MenuItem Header="Copy"/>
-					<MenuItem Header="Paste"/>
+				<MenuItem Header="_About">
+					<MenuItem Header="GUI Repository" Click="GUI_Redirect_Click"/>
+					<MenuItem Header="CMD Repository" Click="CMD_Redirect_Click"/>
 				</MenuItem>
 			</Menu>
 		</DockPanel>
-		<Label IsHitTestVisible="False" Margin="0,6,0,0" HorizontalAlignment="Center">FMOD-Decompiler</Label>
+		<Label IsHitTestVisible="False" Margin="0,6,0,0" HorizontalAlignment="Center">FMOD-Decompiler-GUI</Label>
 		<Separator VerticalAlignment="Top" Margin="10,30,10,0"/>
 		<views:MainView  Margin="0,35,0,0"/>
 	</Panel>
