@@ -84,8 +84,8 @@ public class MainViewModel : ViewModelBase
 
         var curDir = Environment.CurrentDirectory;
 
-        BanksPath = Path.Combine(curDir, "banks");
-        OutputPath = Path.Combine(curDir, "output");
+        BanksPath = Path.Combine(curDir, "Banks");
+        OutputPath = Path.Combine(curDir, "Output");
 
         if (Directory.Exists(BanksPath) == false)
             Directory.CreateDirectory(BanksPath);

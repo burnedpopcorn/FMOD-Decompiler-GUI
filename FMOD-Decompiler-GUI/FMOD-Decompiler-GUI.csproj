@@ -14,6 +14,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\AvaUI\AvaUI.csproj" />
+    <ProjectReference Include="..\UIComponents\UIComponents.csproj" />
   </ItemGroup>
 </Project>

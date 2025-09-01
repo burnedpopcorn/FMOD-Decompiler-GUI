@@ -27,18 +27,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="FMOD-Decompiler\FMOD-Decompiler.exe">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="FMOD-Decompiler\FMOD-Decompiler.pdb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="FMOD-Decompiler\fmod.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="FMOD-Decompiler\fmodstudio.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
+	<Folder Include="FMOD-Decompiler" />
+	<Content Include="FMOD-Decompiler/**">
+	  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+	</Content>
   </ItemGroup>
 
   <ItemGroup>
