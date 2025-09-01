@@ -1,0 +1,70 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:AvaUI.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="AvaUI.Views.MainView"
+             x:DataType="vm:MainViewModel">
+	<Design.DataContext>
+		<vm:MainViewModel />
+	</Design.DataContext>
+
+	<Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="*"/>
+			<RowDefinition Height="Auto"/>
+		</Grid.RowDefinitions>
+		
+		<StackPanel HorizontalAlignment="Center" Grid.Row="0">
+			<!-- Bank Files Filepath -->
+			<Label
+				ToolTip.Tip="The folder with bank files."
+				HorizontalAlignment="Center">Bank Source Folder
+			</Label>
+			<StackPanel Orientation="Horizontal" Margin="0,5">
+				<TextBox Text="{Binding BanksPath}" IsEnabled="{Binding !IsPathsReadOnly}" Width="400"/>
+				<Button Command="{Binding PickBanksFolderCommand}" IsEnabled="{Binding !IsPathsReadOnly}">...</Button>
+			</StackPanel>
+			
+			<!-- Output Project Filepath -->
+			<Label
+				ToolTip.Tip="The folder where the output project should go."
+				HorizontalAlignment="Center">Output Folder
+			</Label>
+			<StackPanel Orientation="Horizontal" Margin="0,5">
+				<TextBox Text="{Binding OutputPath}" IsEnabled="{Binding !IsPathsReadOnly}" Width="400"/>
+				<Button Command="{Binding PickOutputFolderCommand}" IsEnabled="{Binding !IsPathsReadOnly}">...</Button>
+			</StackPanel>
+
+			<!-- Project Name -->
+			<Label
+				ToolTip.Tip="The name of the Output Project."
+				HorizontalAlignment="Center">
+				Project Name
+			</Label>
+			<StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Margin="0,5">
+				<TextBox Text="{Binding ProjectName}" IsEnabled="{Binding !IsPathsReadOnly}" Width="200"/>
+			</StackPanel>
+
+			<!-- Extract Button -->
+			<StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Margin="10">
+				<Button IsEnabled="{Binding !IsPathsReadOnly}" Command="{Binding StartExtractingCommand}" Margin="5">Extract</Button>
+			</StackPanel>
+		</StackPanel>
+
+		<!-- Console TextBox -->
+		<Border Grid.Row="1" BorderThickness="1" BorderBrush="Gray" CornerRadius="5">
+			<ScrollViewer x:Name="ConsoleScroll" >
+				<StackPanel x:Name="Console" />
+			</ScrollViewer>
+		</Border>
+		
+		<!-- Progress Bar -->
+		<StackPanel Grid.Row="2">
+			<TextBlock Margin="5" Text="{Binding ProgressText}"/>
+			<ProgressBar Height="10" Minimum="0" Maximum="{Binding ProgressMaximum}" Value="{Binding ProgressValue}" ShowProgressText="False"/>
+		</StackPanel>
+	</Grid>
+</UserControl>
