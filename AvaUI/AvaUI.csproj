@@ -24,8 +24,4 @@
     <PackageReference Include="ProcessX" Version="1.5.5" />
     <PackageReference Include="ReactiveUI.Fody" Version="19.5.39" />
   </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\FMOD-Decompiler\FMOD-Decompiler.csproj" />
-  </ItemGroup>
 </Project>
