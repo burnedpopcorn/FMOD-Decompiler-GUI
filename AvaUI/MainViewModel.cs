@@ -1,4 +1,5 @@
 ﻿using Cysharp.Diagnostics;
+using MsBox.Avalonia.Base;
 using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
 using System;
@@ -124,13 +125,18 @@ public class MainViewModel : ViewModelBase
         }
 
         // Launch FMOD-Decompiler Console App
-        var consoleappstart = ProcessX.StartAsync($"FMOD-Decompiler\\FMOD-Decompiler.exe --input {BanksPath} --output {OutputPath} --verbose --GUI");
+        var Args = $"--input {BanksPath} --output {OutputPath} --name {ProjectName} --verbose --GUI";
+        var consoleappstart = ProcessX.StartAsync($"FMOD-Decompiler\\FMOD-Decompiler.exe {Args}");
         // Get Console Output
         await foreach (string consoleLine in consoleappstart)
         {
+            // ProgressText = "";
+            // ProgressMaximum = 0;
+            // ProgressValue = 0;
             await AddConsoleLine.Handle(consoleLine).ToTask();
         }
 
         IsPathsReadOnly = false;
+        ProgressText = "Done!";
     }
 }
