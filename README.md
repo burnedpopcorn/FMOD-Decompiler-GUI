@@ -10,6 +10,7 @@ This uses DLLs from the [FMOD Studio/Core API](https://fmod.com/download#fmodeng
 - Attempts to reconstruct an FMOD Studio Project from the bank files (`.fspro`)
 - Supports multiple bank files for a unified project
 - Uses AvaloniaUI for its GUI
+- Uses [FMOD-Decompiler CMD](https://github.com/doggywatty/FMOD-Decompiler) as a Backend, which can be upgraded without needing to upgrade the GUI build
 
 ## Limitations
 - This tool attempts to reconstruct `.fspro` projects and may not be fully accurate.
