@@ -1,6 +1,6 @@
 ﻿using Avalonia.Controls;
 
-namespace AvaUI.Views;
+namespace FMOD_DecompilerUI.Views;
 
 public partial class MainWindow : Window
 {

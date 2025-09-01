@@ -3,7 +3,7 @@
 using Avalonia;
 using Avalonia.ReactiveUI;
 
-namespace AvaUI.Desktop;
+namespace FMOD_DecompilerUI.Desktop;
 
 class Program
 {

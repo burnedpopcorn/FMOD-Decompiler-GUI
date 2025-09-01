@@ -1,14 +1,14 @@
 ﻿using Avalonia.Controls;
 using Avalonia.Platform.Storage;
 using Avalonia.ReactiveUI;
-using AvaUI.ViewModels;
+using FMOD_DecompilerUI.ViewModels;
 using MsBox.Avalonia.Enums;
 using MsBox.Avalonia;
 using ReactiveUI;
 using System.Reactive;
 using Avalonia.Threading;
 
-namespace AvaUI.Views;
+namespace FMOD_DecompilerUI.Views;
 
 public partial class MainView : ReactiveUserControl<MainViewModel>
 {

@@ -2,10 +2,10 @@
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
 
-using AvaUI.ViewModels;
-using AvaUI.Views;
+using FMOD_DecompilerUI.ViewModels;
+using FMOD_DecompilerUI.Views;
 
-namespace AvaUI;
+namespace FMOD_DecompilerUI;
 
 public partial class App : Application
 {

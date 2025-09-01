@@ -1,15 +1,16 @@
-﻿using ReactiveUI;
+﻿using Cysharp.Diagnostics;
+using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
 using System;
+using System.IO;
 using System.Reactive;
+using System.Reactive.Subjects;
 using System.Reactive.Threading.Tasks;
 using System.Threading.Tasks;
-using System.Reactive.Subjects;
-using static FMOD_Decompiler.Program;
 
-namespace AvaUI.ViewModels;
+namespace FMOD_DecompilerUI.ViewModels;
 
-public class MainViewModel
+public class MainViewModel : ViewModelBase
 {
     public Interaction<string, string> PickAFolder { get; } = new();
 
@@ -62,6 +63,19 @@ public class MainViewModel
                     "ERROR!",
                     $"Error: {ex.Message}" }).ToTask();
         });
+
+        var curDir = Environment.CurrentDirectory;
+
+        BanksPath = Path.Combine(curDir, "banks");
+        OutputPath = Path.Combine(curDir, "output");
+
+        if (Directory.Exists(BanksPath) == false)
+            Directory.CreateDirectory(BanksPath);
+
+        if (Directory.Exists(OutputPath) == false)
+            Directory.CreateDirectory(OutputPath);
+
+        ProjectName = "Generic-Project";
     }
 
     async Task PickBanksFolder()
@@ -86,6 +100,37 @@ public class MainViewModel
 
     async Task StartExtracting()
     {
-        await ExtractFSB(BanksPath, OutputPath, ProjectName);
+        if (Directory.Exists(BanksPath) == false)
+        {
+            await MsgBoxError.Handle(new string[] {
+                    "ERROR!",
+                    "Provided Banks Path doesn't exist!" }).ToTask();
+            return;
+        }
+
+        IsPathsReadOnly = true;
+
+        if (ProjectName == string.Empty)
+        {
+            var proceed = await MsgBoxYesNo.Handle(new string[] {
+                    "Warning!",
+                    "Project Name field is Empty! Do you still want to proceed?" }).ToTask();
+
+            if (proceed == false)
+            {
+                IsPathsReadOnly = false;
+                return;
+            }
+        }
+
+        // Launch FMOD-Decompiler Console App
+        var consoleappstart = ProcessX.StartAsync($"FMOD-Decompiler\\FMOD-Decompiler.exe --input {BanksPath} --output {OutputPath} --verbose --GUI");
+        // Get Console Output
+        await foreach (string consoleLine in consoleappstart)
+        {
+            await AddConsoleLine.Handle(consoleLine).ToTask();
+        }
+
+        IsPathsReadOnly = false;
     }
 }

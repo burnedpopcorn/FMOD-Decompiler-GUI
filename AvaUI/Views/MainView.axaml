@@ -2,9 +2,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:vm="clr-namespace:AvaUI.ViewModels"
+             xmlns:vm="clr-namespace:FMOD_DecompilerUI.ViewModels"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             x:Class="AvaUI.Views.MainView"
+             x:Class="FMOD_DecompilerUI.Views.MainView"
              x:DataType="vm:MainViewModel">
 	<Design.DataContext>
 		<vm:MainViewModel />
@@ -24,7 +24,7 @@
 				HorizontalAlignment="Center">Bank Source Folder
 			</Label>
 			<StackPanel Orientation="Horizontal" Margin="0,5">
-				<TextBox Text="{Binding BanksPath}" IsEnabled="{Binding !IsPathsReadOnly}" Width="400"/>
+				<TextBox Text="{Binding BanksPath, Mode=TwoWay}" IsEnabled="{Binding !IsPathsReadOnly}" Width="400"/>
 				<Button Command="{Binding PickBanksFolderCommand}" IsEnabled="{Binding !IsPathsReadOnly}">...</Button>
 			</StackPanel>
 			
@@ -34,7 +34,7 @@
 				HorizontalAlignment="Center">Output Folder
 			</Label>
 			<StackPanel Orientation="Horizontal" Margin="0,5">
-				<TextBox Text="{Binding OutputPath}" IsEnabled="{Binding !IsPathsReadOnly}" Width="400"/>
+				<TextBox Text="{Binding OutputPath, Mode=TwoWay}" IsEnabled="{Binding !IsPathsReadOnly}" Width="400"/>
 				<Button Command="{Binding PickOutputFolderCommand}" IsEnabled="{Binding !IsPathsReadOnly}">...</Button>
 			</StackPanel>
 
@@ -45,7 +45,7 @@
 				Project Name
 			</Label>
 			<StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Margin="0,5">
-				<TextBox Text="{Binding ProjectName}" IsEnabled="{Binding !IsPathsReadOnly}" Width="200"/>
+				<TextBox Text="{Binding ProjectName, Mode=TwoWay}" HorizontalAlignment="Center" IsEnabled="{Binding !IsPathsReadOnly}" Width="200"/>
 			</StackPanel>
 
 			<!-- Extract Button -->
