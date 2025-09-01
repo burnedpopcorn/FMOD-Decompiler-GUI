@@ -6,11 +6,6 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AvaUI", "AvaUI\AvaUI.csproj", "{A1E3D227-0273-4990-9ABF-FA30CDDD99CC}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AvaUI.Desktop", "AvaUI.Desktop\AvaUI.Desktop.csproj", "{E04ECD6F-B53D-404F-8E67-48C3AF6A7C3C}"
-	ProjectSection(ProjectDependencies) = postProject
-		{016A14DB-4807-E433-024E-80E01F11AAC0} = {016A14DB-4807-E433-024E-80E01F11AAC0}
-	EndProjectSection
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FMOD-Decompiler", "FMOD-Decompiler\FMOD-Decompiler.csproj", "{016A14DB-4807-E433-024E-80E01F11AAC0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -36,14 +31,6 @@ Global
 		{E04ECD6F-B53D-404F-8E67-48C3AF6A7C3C}.Release|Any CPU.Build.0 = Release|Any CPU
 		{E04ECD6F-B53D-404F-8E67-48C3AF6A7C3C}.Release|x64.ActiveCfg = Release|Any CPU
 		{E04ECD6F-B53D-404F-8E67-48C3AF6A7C3C}.Release|x64.Build.0 = Release|Any CPU
-		{016A14DB-4807-E433-024E-80E01F11AAC0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{016A14DB-4807-E433-024E-80E01F11AAC0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{016A14DB-4807-E433-024E-80E01F11AAC0}.Debug|x64.ActiveCfg = Debug|x64
-		{016A14DB-4807-E433-024E-80E01F11AAC0}.Debug|x64.Build.0 = Debug|x64
-		{016A14DB-4807-E433-024E-80E01F11AAC0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{016A14DB-4807-E433-024E-80E01F11AAC0}.Release|Any CPU.Build.0 = Release|Any CPU
-		{016A14DB-4807-E433-024E-80E01F11AAC0}.Release|x64.ActiveCfg = Release|x64
-		{016A14DB-4807-E433-024E-80E01F11AAC0}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

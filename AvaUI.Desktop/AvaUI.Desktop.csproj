@@ -15,6 +15,5 @@
 
   <ItemGroup>
     <ProjectReference Include="..\AvaUI\AvaUI.csproj" />
-    <ProjectReference Include="..\FMOD-Decompiler\FMOD-Decompiler.csproj" />
   </ItemGroup>
 </Project>
