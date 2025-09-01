@@ -22,3 +22,7 @@ Pull requests and issue reports are welcome! Feel free to contribute improvement
 
 ## License
 This project is licensed under the GNU License. See `LICENSE` for more details.
+
+## Credits
+- The Original Console App [FMOD-Decompiler](https://github.com/doggywatty/FMOD-Decompiler)
+- [FenixProFmod](https://github.com/M0n7y5/FenixProFmod), used as a template for the UI
