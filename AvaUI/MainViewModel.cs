@@ -4,6 +4,7 @@ using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
 using System;
 using System.IO;
+using System.Linq;
 using System.Reactive;
 using System.Reactive.Subjects;
 using System.Reactive.Threading.Tasks;
@@ -43,6 +44,14 @@ public class MainViewModel : ViewModelBase
 
     [Reactive]
     public int ProgressValue { get; set; } = 0;
+    [Reactive]
+    public string BankText { get; set; } = "";
+
+    [Reactive]
+    public int BankMaximum { get; set; } = 1;
+
+    [Reactive]
+    public int BankValue { get; set; } = 0;
 
     public Subject<string> ConsoleLine { get; } = new();
 
@@ -63,6 +72,14 @@ public class MainViewModel : ViewModelBase
             await MsgBoxError.Handle(new string[] {
                     "ERROR!",
                     $"Error: {ex.Message}" }).ToTask();
+
+            IsPathsReadOnly = false;
+            BankText = "";
+            BankValue = 0;
+            BankMaximum = 1;
+            ProgressText = "Idle";
+            ProgressValue = 0;
+            ProgressMaximum = 1;
         });
 
         var curDir = Environment.CurrentDirectory;
@@ -110,6 +127,12 @@ public class MainViewModel : ViewModelBase
         }
 
         IsPathsReadOnly = true;
+        BankText = "";
+        BankValue = 0;
+        BankMaximum = 1;
+        ProgressText = "Idle";
+        ProgressValue = 0;
+        ProgressMaximum = 1;
 
         if (ProjectName == string.Empty)
         {
@@ -124,19 +147,46 @@ public class MainViewModel : ViewModelBase
             }
         }
 
+        BankMaximum = Directory.GetFiles(BanksPath, "*.bank").Length;
+
         // Launch FMOD-Decompiler Console App
         var Args = $"--input {BanksPath} --output {OutputPath} --name {ProjectName} --verbose --GUI";
         var consoleappstart = ProcessX.StartAsync($"FMOD-Decompiler\\FMOD-Decompiler.exe {Args}");
         // Get Console Output
         await foreach (string consoleLine in consoleappstart)
         {
-            // ProgressText = "";
-            // ProgressMaximum = 0;
-            // ProgressValue = 0;
+            // Add to Console
             await AddConsoleLine.Handle(consoleLine).ToTask();
+
+            // Get Bank currently loaded
+            if (consoleLine.Contains("Loaded Bank:"))
+            {
+                BankValue = BankValue + 1;
+                BankText = consoleLine;
+                ProgressValue = 0;
+                ProgressMaximum = 1;
+            }
+
+            if (consoleLine.Contains("Sounds Found: ") || consoleLine.Contains("Events Found: "))
+            {
+                ProgressText = consoleLine;
+                string[] parts = consoleLine.Split(':');
+                ProgressValue = 0;
+                ProgressMaximum = int.Parse(parts[1].Trim());
+            }
+            else if (consoleLine.Contains("Extracted Sound ") || consoleLine.Contains("Saving Event: "))
+            {
+                ProgressText = consoleLine;
+                ProgressValue = ProgressValue + 1;
+            }
         }
 
         IsPathsReadOnly = false;
+        BankText = "";
+        BankValue = 1;
+        BankMaximum = 1;
         ProgressText = "Done!";
+        ProgressValue = 1;
+        ProgressMaximum = 1;
     }
 }

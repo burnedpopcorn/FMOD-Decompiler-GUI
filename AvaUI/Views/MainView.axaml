@@ -63,7 +63,9 @@
 		
 		<!-- Progress Bar -->
 		<StackPanel Grid.Row="2">
+			<TextBlock Margin="5" Text="{Binding BankText}"/>
 			<TextBlock Margin="5" Text="{Binding ProgressText}"/>
+			<ProgressBar Height="10" Minimum="0" Maximum="{Binding BankMaximum}" Value="{Binding BankValue}" ShowProgressText="False"/>
 			<ProgressBar Height="10" Minimum="0" Maximum="{Binding ProgressMaximum}" Value="{Binding ProgressValue}" ShowProgressText="False"/>
 		</StackPanel>
 	</Grid>
