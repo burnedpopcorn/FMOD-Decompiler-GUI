@@ -16,10 +16,9 @@ public partial class MainWindow : Window
 
     private void ExitMenu_Click(object sender, RoutedEventArgs e)
     {
+        // Kill GUI
         if (Application.Current.ApplicationLifetime is IControlledApplicationLifetime lifetime)
-        {
             lifetime.Shutdown();
-        }
     }
     private void GUI_Redirect_Click(object sender, RoutedEventArgs e)
     {
